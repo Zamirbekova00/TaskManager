@@ -9,4 +9,8 @@
     <string name="description">Description</string>
     <string name="title">Title</string>
     <string name="profile">Profile</string>
+    <string name="get_started">Get started</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="next2">Next</string>
 </resources>

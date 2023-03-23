@@ -44,9 +44,7 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = adapter
         binding.fab.setOnClickListener{
             findNavController().navigate(R.id.taskFragment)
-
         }
-
     }
 
     override fun onDestroyView() {
