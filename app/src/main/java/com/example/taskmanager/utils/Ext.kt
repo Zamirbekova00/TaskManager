@@ -1,7 +1,10 @@
 package com.example.taskmanager.utils
 import android.widget.ImageView
-import com.squareup.picasso.Picasso
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 
-fun ImageView.loadImage(url: String?){
-    Picasso.get().load(url).into(this)
+
+fun ImageView.loadImage(uri: String?){
+    Glide.with(this).load(uri).into(this)
 }
