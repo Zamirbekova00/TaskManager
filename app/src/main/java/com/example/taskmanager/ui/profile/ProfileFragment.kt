@@ -42,10 +42,10 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         pref = Pref(requireContext())
         saveName()
-        saveImage()
+        savePhoto()
     }
 
-    private fun saveImage() {
+    private fun savePhoto() {
         binding.imgProfile.loadImage(pref.getImage())
         binding.imgProfile.setOnClickListener{
             val intent = Intent()
@@ -53,8 +53,18 @@ class ProfileFragment : Fragment() {
             intent.action = Intent.ACTION_GET_CONTENT
             launcher.launch(intent)
         }
-
     }
+
+    //    private fun saveImage() {
+//        binding.imgProfile.loadImage(pref.getImage())
+//        binding.imgProfile.setOnClickListener{
+//            val intent = Intent()
+//            intent.type = "image/*"
+//            intent.action = Intent.ACTION_GET_CONTENT
+//            launcher.launch(intent)
+//        }
+//
+//    }
     private fun saveName() {
         binding.etName.setText(pref.getUser())
         binding.etName.addTextChangedListener{
