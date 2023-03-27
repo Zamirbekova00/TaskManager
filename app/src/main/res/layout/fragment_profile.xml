@@ -15,7 +15,6 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/img_profile"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_img_girl"
             android:layout_width="120dp"
@@ -25,7 +24,6 @@
 
 
     <EditText
-        android:id="@+id/et_name"
         android:layout_marginHorizontal="28dp"
         android:layout_marginTop="36dp"
         android:layout_width="match_parent"
