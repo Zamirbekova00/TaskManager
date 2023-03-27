@@ -65,6 +65,5 @@ private val onNextClick:() -> Unit) :
                 }
             }
         }
-
     }
 }
