@@ -8,12 +8,17 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import com.example.taskmanager.App
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.FragmentTaskBinding
 import com.example.taskmanager.model.Task
 
 class TaskFragment : Fragment() {
     private lateinit var binding: FragmentTaskBinding
+
+    fun onCreate(){
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,11 +31,24 @@ class TaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnSave.setOnClickListener{
-            val data = Task(title = binding.etTitle.text.toString(), desc = binding.etDesc.text.toString())
-            setFragmentResult(TASK_REQUEST, bundleOf(TASK_KEY to data))
-            findNavController().navigateUp()
+
+            if (binding.etTitle.text.isNotEmpty()) {
+                save()
+            }else binding.etTitle.error = "Это поле обязательна для сохранения"
+            val task = Task(
+                title = binding.etTitle.text.toString(),
+                desc = binding.etDesc.text.toString()
+            )
+
         }
     }
+
+    private fun save() {
+        val data = Task(title = binding.etTitle.text.toString(), desc = binding.etDesc.text.toString())
+        App.db.taskDao().insert(data)
+        findNavController().navigateUp()
+    }
+
     companion object{
         const val TASK_REQUEST = "task"
         const val TASK_KEY = "task_key"
