@@ -18,13 +18,12 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter:TaskAdapter
+    private lateinit var adapter: TaskAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = TaskAdapter(this::onLongClick)
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,32 +36,33 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fab.setOnClickListener{
+        binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
         }
         setData()
         binding.recyclerView.adapter = adapter
     }
 
-    private fun setData(){
+    private fun setData() {
         val data = App.db.taskDao().getAll()
         adapter.addTasks(data)
     }
 
     private fun onLongClick(task: Task) {
-
         val alertDialog = AlertDialog.Builder(requireContext())
         alertDialog.setTitle("Удалить")
         alertDialog.setMessage("Вы уверены что хотите удалить ?")
-        alertDialog.setNegativeButton("Нет"
+        alertDialog.setNegativeButton(
+            "Нет"
         ) { dialog, which -> dialog?.cancel() }
 
-        alertDialog.setPositiveButton("Да"
+        alertDialog.setPositiveButton(
+            "Да"
         ) { dialog, which ->
             App.db.taskDao().delete(task)
             setData()
         }
         alertDialog.create().show()
-        }
     }
+}
 

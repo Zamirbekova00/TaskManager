@@ -15,7 +15,6 @@ interface TaskDao {
     @Delete
     fun delete(task: Task)
 
-
     @Query("SELECT * FROM task ORDER BY id DESC")
     fun getAll(): List<Task>
 }
