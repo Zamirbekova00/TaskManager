@@ -32,11 +32,6 @@ class TaskAdapter(private val onLongClick: (Task) -> Unit) : Adapter<TaskAdapter
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(data[position])
-        if (position % 2 == 0) {
-            holder.itemView.setBackgroundColor(Color.parseColor("#FF8383"))
-        } else {
-            holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
-        }
     }
 
     override fun getItemCount(): Int = data.size
@@ -46,9 +41,24 @@ class TaskAdapter(private val onLongClick: (Task) -> Unit) : Adapter<TaskAdapter
             with(binding) {
                 tvTitle.text = task.title
                 tvDesc.text = task.desc
+                stripedBackground()
                 itemView.setOnLongClickListener {
                     onLongClick(task)
                     false
+                }
+            }
+        }
+
+        private fun stripedBackground() {
+            binding.apply {
+                if (adapterPosition % 2 == 0) {
+                    itemView.setBackgroundColor(Color.parseColor("#000000"))
+                    tvTitle.setTextColor(Color.parseColor("#FFFFFFFF"))
+                    tvDesc.setTextColor(Color.parseColor("#FFFFFFFF"))
+                } else {
+                    itemView.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+                    tvTitle.setTextColor(Color.parseColor("#000000"))
+                    tvDesc.setTextColor(Color.parseColor("#000000"))
                 }
             }
         }
