@@ -37,4 +37,14 @@
         android:name="com.example.taskmanager.ui.onBoard.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board" />
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.taskmanager.ui.auth.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" />
+    <fragment
+        android:id="@+id/phoneNumberAuthFragment"
+        android:name="com.example.taskmanager.ui.auth.PhoneNumberAuthFragment"
+        android:label="fragment_phone_number_auth"
+        tools:layout="@layout/fragment_phone_number_auth" />
 </navigation>

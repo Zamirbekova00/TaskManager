@@ -13,4 +13,10 @@
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="next2">Next</string>
+    <string name="google">Google</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="phoneNum">Номер телефон</string>
+    <string name="enterYourNumber">Введите свой номер телефона</string>
+    <string name="ok">Ok</string>
+    <string name="code">Введите код</string>
 </resources>
