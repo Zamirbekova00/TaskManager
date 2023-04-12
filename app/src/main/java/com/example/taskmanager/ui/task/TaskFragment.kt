@@ -27,7 +27,7 @@ class TaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnSave.setOnClickListener {
-            if (binding.etTitle.text.isNotEmpty()) {
+            if (binding.etTitle.text?.isNotEmpty() == true) {
                 save()
             } else binding.etTitle.error = "Это поле обязательна для сохранения"
         }

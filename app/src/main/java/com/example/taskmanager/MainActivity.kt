@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         pref = Pref(this)
 
         FirebaseMessaging.getInstance().token.addOnSuccessListener {
-            Log.e("ololo", "onCreate: $it")
+            Log.e("kalbusha", "onCreate: $it")
         }
 
         val navView: BottomNavigationView = binding.navView

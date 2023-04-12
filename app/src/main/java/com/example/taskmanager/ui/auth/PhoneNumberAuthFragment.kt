@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
 class PhoneNumberAuthFragment : Fragment() {
     private lateinit var binding: FragmentPhoneNumberAuthBinding
     private lateinit var auth: FirebaseAuth
-    private var isReadyToStart = false
+    private var toStart = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,19 +36,18 @@ class PhoneNumberAuthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
         binding.apply {
-            //showAutoKeyboard(requireContext(), etPhoneNumber)
             btnOk.setOnClickListener {
-                if (etPhoneNumber.text.isNotEmpty()) {
+                if (etPhoneNumber.text?.isNotEmpty() == true) {
                     sendVerificationCode(etPhoneNumber.text.toString())
                 } else {
                     etPhoneNumber.error = "Поле для номера телефона пусто!!!"
                 }
             }
             btnVerify.setOnClickListener {
-                if (etCode.text.isNotEmpty()) {
+                if (etCode.text?.isNotEmpty() == true) {
                     verifyCode(etCode.text.toString())
                 } else {
-                    etCode.error = "Поле для номера телефона пусто!!!"
+                    etCode.error = "Поле для кода пусто!!!"
                 }
             }
         }
@@ -64,9 +63,9 @@ class PhoneNumberAuthFragment : Fragment() {
         mFireBaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 findNavController().navigateUp()
-                isReadyToStart = true
-                setFragmentResult(CODE_FOR_RESULT, bundleOf(KEY_BOOLEAN_RESULT to isReadyToStart))
-                isReadyToStart = false
+                toStart = true
+                setFragmentResult(CODE_FOR_RESULT, bundleOf(KEY_BOOLEAN_RESULT to toStart))
+                toStart = false
             }
         }
     }
@@ -86,7 +85,7 @@ class PhoneNumberAuthFragment : Fragment() {
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
             val code = credential.smsCode
             if (code != null) {
-                PhoneNumberAuthFragment().sendVerificationCode(code) //тут может быть ошибка
+                PhoneNumberAuthFragment().sendVerificationCode(code)
             }
         }
 
@@ -106,7 +105,7 @@ class PhoneNumberAuthFragment : Fragment() {
 
     companion object {
         lateinit var verificationID: String
-        val CODE_FOR_RESULT = "12121"
-        val KEY_BOOLEAN_RESULT = "12221"
+        val CODE_FOR_RESULT = "456988"
+        val KEY_BOOLEAN_RESULT = "456774"
     }
 }

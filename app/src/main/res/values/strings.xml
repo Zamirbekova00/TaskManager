@@ -19,4 +19,7 @@
     <string name="enterYourNumber">Введите свой номер телефона</string>
     <string name="ok">Ok</string>
     <string name="code">Введите код</string>
+    <string name="username">Username</string>
+    <string name="car_name">Car name</string>
+    <string name="car_model">Car model</string>
 </resources>

@@ -73,7 +73,7 @@ class AuthFragment : Fragment() {
                 0, null
             )
         }.addOnFailureListener {
-            Log.e("ololo", "auth" + it.message)
+            Log.e("kalbusha", "auth" + it.message)
         }
     }
 
@@ -92,14 +92,14 @@ class AuthFragment : Fragment() {
                                 .addOnSuccessListener {
                                     findNavController().navigateUp()
                                 }.addOnFailureListener {
-                                    Log.e("ololo", "onActivityResult: " + it.message)
+                                    Log.e("kalbusha", "onActivityResult: " + it.message)
                                 }
                         }
                         else -> {
                         }
                     }
                 } catch (e: ApiException) {
-                    Log.e("ololo", "onActivityResult: " + e.message)
+                    Log.e("kalbusha", "onActivityResult: " + e.message)
                 }
             }
         }
